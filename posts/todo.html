@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="../bootstrap.css">
+	<link rel="stylesheet" href="../style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.done {
+			text-decoration: line-through;
+		}
+
+		#todolist ul {
+			margin-top: 15px;
+		}
+
+		#todolist li {
+			clear: both;
+		}
+ 
+	</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-light bg-light font-weight-bold">
+    <a class="navbar-brand" href="../index.html">blakedhall.com</a>
+</nav>
+
+<div class="my-nav">
+	<ul>
+		<a href="../index.html"><li>Posts</li></a>
+		<a href="../about.html"><li>About me</li></a>
+		<a href="../resume.html"><li>Resume</li></a>
+		<a href="https://github.com/bdhall"><li>GitHub</li></a>
+		<a href="https://twitter.com/blakedhall"><li>Twitter</li></a>
+	</ul>
+</div>
+
+<div id="main-content-wrapper">
+		<div id="about-me">
+				<div class="card">
+				  <img src="../img/todo.jpg" alt="Card image cap">
+				  <div class="card-body" >
+					<h5 class="card-title card-date">June 4th, 2018</h5>
+				    <h5 class="card-title">Simple Javascript To-do</h5>
+				    <p class="card-text">
+			    		<p>Type some text into the input field and then click 'Add' to add an item to the to-do list. Once you're done with the item, click on it to cross it out. If want to remove the line, just click again. </p>
+
+					    <input style="width:50%" id="inputText" type="text"> 
+					    <button  id="addButton">Add</button> 
+					    <button  id="clearButton">Clear</button> 
+
+				    	<ul id="todolist">
+				    	</ul>
+
+						<script>
+				    		var todoList = document.getElementById("todolist");
+				    		var addButton = document.getElementById("addButton");
+				    		var clearButton = document.getElementById("clearButton");
+				    		var todoText = document.getElementById("inputText");
+
+
+
+				    		addButton.addEventListener("click", function() {
+				    			// Add item to to-do list
+				    			var todoItem = document.createElement("li");
+				    			todoItem.appendChild(document.createTextNode(todoText.value));
+				    			todoList.appendChild(todoItem);
+				    			todoItem.addEventListener("click", function() {
+				    				todoItem.classList.toggle("done");
+				    			})
+
+
+				    			todoText.value = "";
+				    		})
+
+				    		clearButton.addEventListener("click", function() {
+				    				todoList.innerHTML = "";
+				    		})
+
+				    	</script>
+				    </p>
+				  </div>
+				</div>
+		</div>
+</div>
+
+</body>
+</html>
